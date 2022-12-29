@@ -1,8 +1,8 @@
 use std::env;
 use std::fs;
 
-use rustybase::base64encoder::is_padding_necessary;
-use rustybase::base64encoder::encode;
+use rusty_encoder::base64encoder::is_padding_necessary;
+use rusty_encoder::base64encoder::encode;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
