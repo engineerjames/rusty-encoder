@@ -12,8 +12,6 @@ fn main() {
     }
 
     let file_binary_contents = fs::read(&args[1]).expect("Unable to read file!");
-    println!("Size of file: {} bytes.", file_binary_contents.len());
-
     let encoded_string = encode(&file_binary_contents);
 
     println!("{}", encoded_string);

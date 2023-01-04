@@ -144,7 +144,6 @@ pub mod base64encoder {
 
             // We have now processed the last
             if j > values.len() - 1 {
-                println!("Working value: {}", working_value);
                 break;
             }
         }
@@ -152,8 +151,6 @@ pub mod base64encoder {
         // Pad result if necessary
         if padding_necessary {
             let mut padding_sextets_required = (-sextets_output).rem_euclid(4);
-            println!("Padding required is: {} ", padding_sextets_required);
-            println!("Bits in working value: {} ", bits_in_working_value);
             let positions_to_shift = 6 - bits_in_working_value;
 
             encoded_string.push(get_lookup_value(working_value << positions_to_shift));
