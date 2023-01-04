@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use rustybase::base64encoder::{get_lookup_value, is_padding_necessary, encode};
+    use rusty_encoder::base64encoder::{encode, get_lookup_value, is_padding_necessary};
 
     #[test]
     #[should_panic]
@@ -19,7 +19,7 @@ mod tests {
     fn encoding_empty_string_returns_empty() {
         let expected_result = "";
         let empty_bytes: Vec<u8> = Vec::new();
-        let actual_result = encode(&empty_bytes, false);
+        let actual_result = encode(&empty_bytes);
 
         assert_eq!(expected_result, actual_result);
     }
@@ -32,7 +32,7 @@ mod tests {
         assert_eq!(is_padding_necessary(&test_string_bytes), false);
 
         let expected_result = "aGVsbG93b3Js";
-        let actual_result = encode(&test_string_bytes, false);
+        let actual_result = encode(&test_string_bytes);
 
         assert_eq!(expected_result, actual_result);
     }
@@ -45,7 +45,7 @@ mod tests {
         assert_eq!(is_padding_necessary(&test_string_bytes), true);
 
         let expected_result = "TQ==";
-        let actual_result = encode(&test_string_bytes, true);
+        let actual_result = encode(&test_string_bytes);
 
         assert_eq!(expected_result, actual_result);
     }
@@ -58,7 +58,7 @@ mod tests {
         assert_eq!(is_padding_necessary(&test_string_bytes), true);
 
         let expected_result = "aGVsbG93b3JsZA==";
-        let actual_result = encode(&test_string_bytes, true);
+        let actual_result = encode(&test_string_bytes);
 
         assert_eq!(expected_result, actual_result);
     }

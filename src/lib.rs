@@ -78,7 +78,9 @@ pub mod base64encoder {
         return true;
     }
 
-    pub fn encode(values: &Vec<u8>, padding_necessary: bool) -> String {
+    pub fn encode(values: &Vec<u8>) -> String {
+        let padding_necessary = is_padding_necessary(values);
+
         let mut working_value: u8 = 0;
         let mut bits_in_working_value = 0;
 
@@ -153,7 +155,7 @@ pub mod base64encoder {
             println!("Padding required is: {} ", padding_sextets_required);
             println!("Bits in working value: {} ", bits_in_working_value);
             let positions_to_shift = 6 - bits_in_working_value;
-            println!("Modded value: {}", get_lookup_value(working_value << positions_to_shift));
+
             encoded_string.push(get_lookup_value(working_value << positions_to_shift));
 
             padding_sextets_required -= 1;
